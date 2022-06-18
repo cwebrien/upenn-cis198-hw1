@@ -235,8 +235,10 @@ fn test_str_concat() {
     assert_eq!(str_concat("ABC", "def"), expected);
 }
 
-pub fn string_concat(s1: String, s2: String) -> String {    
-    let result = format!("{}{}", s1, s2);
+pub fn string_concat(s1: String, s2: String) -> String {   
+    let mut result: String = String::new();
+    result += &s1;
+    result += &s2; 
     return result;
 }
 
@@ -263,7 +265,7 @@ pub fn concat_all(v: Vec<String>) -> String {
 
 #[test]
 fn test_concat_all() {
-    let test_case = vec![String::from("abc"), String::from("DEF"), String::from("g!h")];
+    let test_case = vec!["abc".to_string(), "DEF".to_string(), "g!h".to_string()];
     assert_eq!(concat_all(test_case), "abcDEFg!h");
 }
 
@@ -282,11 +284,27 @@ fn test_concat_all() {
 */
 
 pub fn parse_all(v: Vec<String>) -> Vec<i32> {
-    unimplemented!()
+    let mut result: Vec<i32> = Vec::new();
+    for s in v {
+        let numeric: i32 = s.parse().expect("igoring error");
+        result.push(numeric);
+    }
+    result
+}
+
+#[test]
+fn test_parse_all() {
+    let test_case: Vec<String> = vec!["123".to_string(), "-213".to_string(), "-3923".to_string()];
+    let expected: Vec<i32> = vec![123, -213, -3923];
+    assert_eq!(parse_all(test_case), expected);
 }
 
 pub fn print_all(v: Vec<i32>) -> Vec<String> {
-    unimplemented!()
+    let mut result: Vec<String> = Vec::new();
+    for i in v {
+        result.push(i.to_string());
+    }
+    result
 }
 
 #[test]
@@ -313,7 +331,12 @@ fn test_parse_print() {
 */
 
 pub fn concat_even_fibonaccis(n: usize) -> String {
-    unimplemented!()
+    let sequence = fibonacci(1, 1, n);
+    fn is_even(i: i32) -> bool {i % 2 == 0}
+    let filtered = filter(&sequence, is_even);
+    let filtered = print_all(filtered);
+    let filtered = concat_all(filtered);
+    filtered
 }
 
 #[test]
