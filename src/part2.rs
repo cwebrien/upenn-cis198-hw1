@@ -118,12 +118,12 @@ pub fn file_to_string(path: &str) -> String {
 #[test]
 fn test_add1() {
     let mut x = 1;
-    add1(x);
+    add1(&mut x);
     assert_eq!(x, 2);
 }
 
-pub fn add1(mut x: i32) -> () {
-    x += 1;
+pub fn add1(x: &mut i32) -> () {
+    *x += 1;
 }
 
 /*
