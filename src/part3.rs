@@ -44,12 +44,12 @@ fn test_swap_ints() {
 /*
     Problem 2: String duplication
 */
-// #[test]
-// fn copy_string_test() {
-//     let str1 = String::from("foo");
-//     let str2 = str1;
-//     assert_eq!(str1, str2);
-// }
+#[test]
+fn copy_string_test() {
+    let str1 = String::from("foo");
+    let str2 = str1.clone();
+    assert_eq!(str1, str2);
+}
 // This test doesn't work. Fix it by copying strings properly.
 // Q1. What went wrong?
 
