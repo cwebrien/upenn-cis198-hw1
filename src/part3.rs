@@ -27,7 +27,18 @@
     the same, i.e. swap_ints(&mut x, &mut x).)
 */
 pub fn swap_ints(x1: &mut i32, x2: &mut i32) {
-    unimplemented!()
+    *x1 = *x1 ^ *x2;
+    *x2 = *x1 ^ *x2;
+    *x1 = *x1 ^ *x2;
+}
+
+#[test]
+fn test_swap_ints() {
+    let mut i1: i32 = 1;
+    let mut i2: i32 = -412;
+    swap_ints(&mut i1, &mut i2);
+    assert_eq!(-412, i1);
+    assert_eq!(1, i2);
 }
 
 /*
@@ -199,6 +210,7 @@ fn append_row(grid: &mut Vec<Vec<bool>>, row: Vec<bool>) {
 fn is_first_row(grid: &[Vec<bool>], row: &[bool]) -> bool {
     // Check if row is the first row in grid
     // Remember to handle the case when grid is empty
+    true
 }
 
 /*
