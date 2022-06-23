@@ -58,7 +58,7 @@ fn test_split_clone() {
 */
 
 fn pick_longest(s1: &str, s2: &str) -> String {
-    if (s1.len() >= s2.len()) {
+    if s1.len() >= s2.len() {
         s1.into()
     } else {
         s2.into()
@@ -100,7 +100,11 @@ fn test_pick_longest() {
 */
 
 pub fn file_to_string(path: &str) -> String {
-    unimplemented!()
+    let mut file = File::open(path).expect("Ignoring error: ");
+ 
+    let mut result: String = String::new();
+    file.read_to_string(&mut result).expect("Ignoring error: ");
+    result
 }
 
 /*
