@@ -34,19 +34,19 @@ fn split_clone(s: &str) -> Vec<String> {
 }
 
 #[test]
-fn test_split_ref(){
+fn test_split_ref() {
     let string = "Hello World!".to_string();
-    assert_eq!(split_ref(& string), ["Hello", "World!"]);
-    assert_eq!(split_ref("Hello World!"), & ["Hello", "World!"]);
+    assert_eq!(split_ref(&string), ["Hello", "World!"]);
+    assert_eq!(split_ref("Hello World!"), &["Hello", "World!"]);
     assert_eq!(split_ref("Hello World!"), vec!["Hello", "World!"]);
 }
 
 #[test]
-fn test_split_clone(){
-   let string = "Hello World!".to_string();
-   assert_eq!(split_clone(& string), ["Hello", "World!"]);
-   assert_eq!(split_clone("Hello World!"), & ["Hello", "World!"]);
-   assert_eq!(split_clone("Hello World!"), vec!["Hello", "World!"]);
+fn test_split_clone() {
+    let string = "Hello World!".to_string();
+    assert_eq!(split_clone(&string), ["Hello", "World!"]);
+    assert_eq!(split_clone("Hello World!"), &["Hello", "World!"]);
+    assert_eq!(split_clone("Hello World!"), vec!["Hello", "World!"]);
 }
 
 /*
@@ -57,13 +57,25 @@ fn test_split_clone(){
     Return a new String (we will see later how to return a &str.)
 */
 
-// #[test]
-// fn test_pick_longest {
-//     assert_eq!(
-//         pick_longest(& "cat".to_string(), & "dog".to_string()),
-//         "cat".to_string()
-//     );
-// }
+fn pick_longest(s1: &str, s2: &str) -> String {
+    if (s1.len() >= s2.len()) {
+        s1.into()
+    } else {
+        s2.into()
+    }
+}
+
+#[test]
+fn test_pick_longest() {
+    assert_eq!(
+        pick_longest(&"cat".to_string(), &"dog".to_string()),
+        "cat".to_string()
+    );
+    assert_eq!(
+        pick_longest(&"cat".to_string(), &"dog1".to_string()),
+        "dog1".to_string()
+    );
+}
 
 // Question 1:
 // For the curious, attempt to return reference, that is:
@@ -106,7 +118,7 @@ fn test_add1() {
     assert_eq!(x, 2);
 }
 
-pub fn add1(mut x : i32) -> () {
+pub fn add1(mut x: i32) -> () {
     x += 1;
 }
 
