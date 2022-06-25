@@ -63,7 +63,19 @@ fn copy_int_test() {
 
 // Now implement the following function that duplicates a string n times.
 fn duplicate_string(s: &str, times: usize) -> Vec<String> {
-    unimplemented!()
+    let mut result: Vec<String> = Vec::new();
+    for i in 0..times {
+        result.push(String::from(s));
+    }
+    result
+}
+
+#[test]
+fn test_duplicate_string() {
+    assert_eq!(
+        duplicate_string("foo", 3),
+        vec![String::from("foo"), String::from("foo"), String::from("foo")]
+    )
 }
 
 /*
@@ -74,15 +86,15 @@ fn duplicate_string(s: &str, times: usize) -> Vec<String> {
     it's called.
 */
 
-// fn copy_me(string: /* Change in here only*/ String) -> String {
-//     string.clone()
-// }
+fn copy_me(string: &String) -> String {
+    string.clone()
+}
 
-// #[test]
-// fn copy_me_test() {
-//     let str1 = String::from("foo");
-//     assert_eq!(str1, copy_me(/* Change in here only*/ str1));
-// }
+#[test]
+fn copy_me_test() {
+    let str1 = String::from("foo");
+    assert_eq!(str1, copy_me(&str1));
+}
 
 // #[test]
 // fn copy_me_test2() {
@@ -264,7 +276,7 @@ fn delete_negative_keys(h: &mut HashMap<i32, i32>) {
 
 fn merge_maps(
     merged: &mut HashMap<String, String>,
-    add: HashMap<String,String>
+    add: HashMap<String, String>,
 ) {
     unimplemented!()
 }
