@@ -97,11 +97,11 @@ fn copy_me_test() {
 }
 
 // #[test]
-// fn copy_me_test2() {
-//     let str1 = String::from("foo");
-//     let str2 = copy_me(str1 /* Change in here only*/);
-//     assert_eq!(str1, str2);
-// }
+fn copy_me_test2() {
+    let str1 = String::from("foo");
+    let str2 = copy_me(&str1);
+    assert_eq!(str1, str2);
+}
 
 /*
     Problem 4: Lifetime specifiers
