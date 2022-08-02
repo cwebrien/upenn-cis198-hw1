@@ -96,7 +96,7 @@ fn copy_me_test() {
     assert_eq!(str1, copy_me(&str1));
 }
 
-// #[test]
+#[test]
 fn copy_me_test2() {
     let str1 = String::from("foo");
     let str2 = copy_me(&str1);
@@ -122,9 +122,20 @@ fn copy_me_test2() {
 // }
 
 // The same function from part2
-// fn pick_longest2(s1: &str, s2: &str) -> &str {
-//     unimplemented!()
-// }
+fn pick_longest2<'a>(s1: &'a str, s2: &'a str) -> &'a str {
+    if s1.len() >= s2.len() {
+        s1
+    } else {
+        s2
+    }
+}
+
+#[test]
+fn test_pick_longest2() {
+    let s1 = "foobar";
+    let s2 = "baz";
+    assert_eq!(s1, pick_longest2(s1, s2));
+}
 
 /*
     Problem 5: Using functions with lifetimes
