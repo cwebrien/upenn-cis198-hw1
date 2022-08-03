@@ -152,11 +152,33 @@ fn test_pick_longest2() {
 */
 
 fn pick_longest_in_v1(v: Vec<String>) -> String {
-    unimplemented!()
+    let mut result = String::from("");
+
+    for s in v {
+        result = String::from(pick_longest2(&result, &s));
+    }
+
+    return result;
 }
 
 fn pick_longest_in_v2(v: Vec<&str>) -> &str {
-    unimplemented!()
+    let mut result = "";
+
+    for s in v {
+        result = pick_longest2(result, s);
+    }
+
+    return result;
+}
+
+#[test]
+fn test_pick_longest_in() {
+    let v_string =
+        vec![String::from("abc"), String::from("asdf"), String::from("a")];
+    assert_eq!(String::from("asdf"), pick_longest_in_v1(v_string));
+
+    let v_str = vec!["abc", "asdf", "a"];
+    assert_eq!("asdf", pick_longest_in_v2(v_str));
 }
 
 /*
