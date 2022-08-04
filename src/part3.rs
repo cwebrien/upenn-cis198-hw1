@@ -193,18 +193,52 @@ fn test_pick_longest_in() {
 */
 
 fn pad_with_zeros_v1(v: Vec<usize>, desired_len: usize) -> Vec<usize> {
-    unimplemented!()
-    // debug_assert_eq!(result.len(), desired_len);
+    if v.len() > desired_len {
+        panic!(
+            "Vector is longer than the desired padding: {} > {}",
+            v.len(),
+            desired_len
+        );
+    }
+
+    let mut v = v.clone();
+    let padding = desired_len - v.len();
+    for i in 0..padding {
+        v.push(0);
+    }
+    return v;
 }
 
 fn pad_with_zeros_v2(slice: &[usize], desired_len: usize) -> Vec<usize> {
-    unimplemented!()
-    // debug_assert_eq!(result.len(), desired_len);
+    if slice.len() > desired_len {
+        panic!(
+            "Vector is longer than the desired padding: {} > {}",
+            slice.len(),
+            desired_len
+        );
+    }
+
+    let mut v = Vec::from(slice);
+    let padding = desired_len - v.len();
+    for i in 0..padding {
+        v.push(0);
+    }
+    return v;
 }
 
 fn pad_with_zeros_v3(v: &mut Vec<usize>, desired_len: usize) {
-    unimplemented!()
-    // debug_assert_eq!(v.len(), desired_len);
+    if v.len() > desired_len {
+        panic!(
+            "Vector is longer than the desired padding: {} > {}",
+            v.len(),
+            desired_len
+        );
+    }
+
+    let padding = desired_len - v.len();
+    for i in 0..padding {
+        v.push(0);
+    }
 }
 
 #[test]
